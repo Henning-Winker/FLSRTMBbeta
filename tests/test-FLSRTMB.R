@@ -13,7 +13,7 @@
 # TEST
 library(ggplotFL)
 library(FLCore)
-library(FLSRTMB)
+library(FLSRTMBbeta)
 library(FLBRP)
 data(ple4)
 srr <- as.FLSR(ple4,model=bevholtSV)
