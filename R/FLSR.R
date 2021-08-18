@@ -26,6 +26,7 @@
 #' @param SDreport option to converge hessian and get vcov
 #'
 #' @return A list containing elements 'FLSR', of class *FLSR*
+#' @export
 
 srrTMB <- function(object, spr0, s=NULL, s.est=TRUE,s.logitsd=1.3,plim=NULL,nyears=NULL,report.sR0=FALSE,inits=NULL, lower=NULL, upper=NULL,
   SDreport=TRUE) {
