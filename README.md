@@ -67,18 +67,16 @@ Compare fits
 Option to estimate steepness with prior, e.g. from meta-analysis, such as FishLife (Thorson, 2020)
 This requires to specify `s` with the  prior mean and `s.logitsd` is the sd on logit scale 
 
-bh.prior = srrTMB(as.FLSR(ple4,model=bevholtSV),s.est=T,s=0.7,s.logitsd=0.4, spr0=spr0y(ple4))
+`bh.prior = srrTMB(as.FLSR(ple4,model=bevholtSV),s.est=T,s=0.7,s.logitsd=0.4, spr0=spr0y(ple4))`
 
-plot(FLSRs(spr0=bh,spr0y=bh.y,s.prior = bh.prior))+theme(legend.position="right")
+`plot(FLSRs(spr0=bh,spr0y=bh.y,s.prior = bh.prior))+theme(legend.position="right")`
 
 It is also possible to fix steepness
 
-s = c(0.75,0.8,0.85,0.9,0.95)
-bhs <- FLSRs(sapply(s, function(x) { 
-  return( srrTMB(srr,s=x,s.est=F, spr0=spr0y(ple4)))
-}))
-bhs@names = c(paste("s =",round(s,3)))
-plot(bhs)+theme(legend.position="right")
+`s = c(0.75,0.8,0.85,0.9,0.95)`
+`bhs <- FLSRs(sapply(s, function(x) { return( srrTMB(srr,s=x,s.est=F, spr0=spr0y(ple4)))}))`
+`bhs@names = c(paste("s =",round(s,3)))`
+`plot(bhs)+theme(legend.position="right")`
 
 ### Hockey Stick (segmented regression)
 
