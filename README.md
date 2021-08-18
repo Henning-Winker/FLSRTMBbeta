@@ -1,7 +1,10 @@
 # FLSRTMBbeta
-Beta version of stock-recruitment fitting in TMB for FLR  
 
-Features
+*Beta version of stock-recruitment fitting in TMB for FLR*  
+
+### Authors: Henning Winker (EC-JRC) & ago Mosqueira (WUR)*
+
+# Features
 + Fits in less in less then a second
 + Use FLR classes as input and output 
 + Fitting spawner-recruitment model with time-varying spr0(y)  
@@ -36,7 +39,7 @@ To create the `FLSR` input object, the `model=bevholtSV` is selected.
 
 The function spr0y computes annual spr0. A good starting point can be the average  
 
-`spr0 <- yearMeans(spr0y(ple))`
+`spr0 <- yearMeans(spr0y(ple4))`
 
 Fit a bevholt model without constraints 
 
@@ -67,15 +70,18 @@ Compare fits
 Option to estimate steepness with prior, e.g. from meta-analysis, such as FishLife (Thorson, 2020)
 This requires to specify `s` with the  prior mean and `s.logitsd` is the sd on logit scale 
 
-`bh.prior = srrTMB(as.FLSR(ple4,model=bevholtSV),s.est=T,s=0.7,s.logitsd=0.4, spr0=spr0y(ple4))`
+`bh.prior = srrTMB(sr,s.est=T,s=0.7,s.logitsd=0.4, spr0=spr0y(ple4))`
 
 `plot(FLSRs(spr0=bh,spr0y=bh.y,s.prior = bh.prior))+theme(legend.position="right")`
 
 It is also possible to fix steepness
 
 `s = c(0.75,0.8,0.85,0.9,0.95)`
-`bhs <- FLSRs(sapply(s, function(x) { return( srrTMB(srr,s=x,s.est=F, spr0=spr0y(ple4)))}))`
+
+`bhs <- FLSRs(sapply(s, function(x) { return( srrTMB(sr,s=x,s.est=F, spr0=spr0y(ple4)))}))`
+
 `bhs@names = c(paste("s =",round(s,3)))`
+
 `plot(bhs)+theme(legend.position="right")`
 
 ### Hockey Stick (segmented regression)
@@ -86,10 +92,13 @@ First fit a simple hockey-stick without constraints
 
 Now add the constraint that plim = Blim/B0 > 0.1, which can ensure that Blim is within plausible risk adverse biological limits relative B0
 
-`sr.b01 = srrTMB(as.FLSR(ple4,model=segreg),s.est=T, spr0=spr0y(ple4),plim=0.1)`
+`hs.b01 = srrTMB(as.FLSR(ple4,model=segreg),s.est=T, spr0=spr0y(ple4),plim=0.1)`
 
 Compare
 
-`plot(FLSRs(sr=sr,sr.b01=sr.b01))`
+`plot(FLSRs(hs=hs,hs.b01=hs.b01))`
 
+# Licence
+
+European Commission Joint Research Centre D.02. Released under the EUPL 1.1.
 
