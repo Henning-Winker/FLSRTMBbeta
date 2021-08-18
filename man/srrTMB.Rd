@@ -10,6 +10,9 @@ srrTMB(
   s = NULL,
   s.est = TRUE,
   s.logitsd = 1.3,
+  plim = NULL,
+  nyears = 3,
+  report.sR0 = FALSE,
   inits = NULL,
   lower = NULL,
   upper = NULL,
@@ -26,6 +29,8 @@ srrTMB(
 \item{s.est}{option to estimate steepness}
 
 \item{s.logitsd}{prior sd for logit(s), default is 1.3 (flat) if s.est = TRUE}
+
+\item{plim}{determines the minimum break point of the hockey-stick as ratio blim/b0}
 
 \item{inits}{option to specify initial values of log(r0), log(SigR) and logit(s)}
 

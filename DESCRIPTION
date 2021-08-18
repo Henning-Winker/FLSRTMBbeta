@@ -18,8 +18,7 @@ RoxygenNote: 7.1.1
 Depends:
   FLCore (>= 2.6.16)
 Imports: 
-  TMB (>= 1.7.19),
-  FLBRP
+  TMB (>= 1.7.19)
 LinkingTo: 
   TMB,
   RcppEigen
