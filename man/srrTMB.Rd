@@ -11,7 +11,7 @@ srrTMB(
   s.est = TRUE,
   s.logitsd = 1.3,
   plim = NULL,
-  nyears = 3,
+  nyears = NULL,
   report.sR0 = FALSE,
   inits = NULL,
   lower = NULL,
@@ -31,6 +31,10 @@ srrTMB(
 \item{s.logitsd}{prior sd for logit(s), default is 1.3 (flat) if s.est = TRUE}
 
 \item{plim}{determines the minimum break point of the hockey-stick as ratio blim/b0}
+
+\item{nyears}{yearMeans from the tail used to compute a,b from the reference spr0 (default all years)}
+
+\item{report.sR0}{option to report s and R0 instead of a,b}
 
 \item{inits}{option to specify initial values of log(r0), log(SigR) and logit(s)}
 

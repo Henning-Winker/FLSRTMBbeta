@@ -14,10 +14,9 @@
 library(ggplotFL)
 library(FLCore)
 library(FLSRTMBbeta)
-library(FLBRP)
 data(ple4)
 srr <- as.FLSR(ple4,model=bevholtSV)
-spr0 <- spr0(FLBRP(ple4,nyears=3)) # decrease for illustration
+spr0 <- yearMeans(spr0y(ple4)) 
 
 # Estimate steepness
 bh = srrTMB(as.FLSR(ple4,model=bevholtSV),s.est=T, spr0=spr0)

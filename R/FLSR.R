@@ -17,6 +17,8 @@
 #' @param s.est option to estimate steepness
 #' @param s.logitsd prior sd for logit(s), default is 1.3 (flat) if s.est = TRUE 
 #' @param plim determines the minimum break point of the hockey-stick as ratio blim/b0
+#' @param nyears yearMeans from the tail used to compute a,b from the reference spr0 (default all years)
+#' @param report.sR0 option to report s and R0 instead of a,b
 #' @param inits option to specify initial values of log(r0), log(SigR) and logit(s)
 #' @param lower option to specify lower bounds of log(r0), log(SigR) and logit(s) 
 #' @param upper option to specify upper bounds of log(r0), log(SigR) and logit(s)
@@ -25,8 +27,10 @@
 #'
 #' @return A list containing elements 'FLSR', of class *FLSR*
 
-srrTMB <- function(object, spr0, s=NULL, s.est=TRUE,s.logitsd=1.3,plim=NULL,nyears=3,report.sR0=FALSE,inits=NULL, lower=NULL, upper=NULL,
+srrTMB <- function(object, spr0, s=NULL, s.est=TRUE,s.logitsd=1.3,plim=NULL,nyears=NULL,report.sR0=FALSE,inits=NULL, lower=NULL, upper=NULL,
   SDreport=TRUE) {
+  
+  if(is.null(nyears)) nyears = dim(ssb(object))[2]
   if(is.null(plim)){
     if(is.null(s)& s.est){ plim=0.01} else {plim=0.2}
   }
