@@ -12,6 +12,7 @@
 
 # TEST
 library(ggplotFL)
+library(ggplot2)
 library(FLCore)
 library(FLSRTMBbeta)
 
@@ -85,6 +86,7 @@ hs.b01 = srrTMB(as.FLSR(ple4,model=segreg),s.est=T, spr0=spr0y(ple4),plim=0.1)
 
 plot(FLSRs(hs=hs,hs.b01=hs.b01))+theme(legend.position="right")
 
+# Compute Blim/B0 
 ab = (params(hs.b01))
 R0 = ab[1]*ab[2]
 B0 = R0*yearMeans(spr0y(ple4))
