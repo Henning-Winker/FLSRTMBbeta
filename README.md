@@ -1,13 +1,13 @@
 # FLSRTMBbeta
 
-*Beta version of stock-recruitment fitting in TMB for FLR*  
+*Beta version FLSRTMB: fitting stock-recruitment with TMB in FLR*  
 
 ### Authors: Henning Winker (EC-JRC) & ago Mosqueira (WUR)*
 
 # Features
-+ Fits in less in less then a second
-+ Use FLR classes as input and output 
-+ Fitting spawner-recruitment model with time-varying spr0(y)  
++ Rapidly fits stock-recruitment models with very convergence properties 
++ Uses FLR classes as input and output 
++ Enables fitting spawner-recruitment model with time-varying spr0(y)  
 + Enables use of steepness priors from fishlife
 + Provides options for conditioned hockey-stick with a break point b > plim (e.g. plim = 0.1B0) 
 
