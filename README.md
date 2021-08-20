@@ -2,7 +2,7 @@
 
 *Beta version FLSRTMB: fitting stock-recruitment with TMB in FLR*  
 
-### Authors: Henning Winker (EC-JRC) & ago Mosqueira (WUR)*
+### Authors: Henning Winker (EC-JRC) & Iago Mosqueira (WUR)*
 
 # Features
 + Rapidly fits stock-recruitment models with very convergence properties 
